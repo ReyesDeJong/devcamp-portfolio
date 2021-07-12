@@ -21,10 +21,9 @@ class PortfoliosController < ApplicationController
 
   def create
     @portfolio_item = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body))
-
     respond_to do |format|
       if @portfolio_item.save
-        format.html { redirect_to portfolios_path, notice: "Your portfolio item is now live." }
+        format.html { redirect_to portfolios_path, notice: 'Your portfolio item is now live.' }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -40,7 +39,7 @@ class PortfoliosController < ApplicationController
 
     respond_to do |format|
       if @portfolio_item.update(params.require(:portfolio).permit(:title, :subtitle, :body))
-        format.html { redirect_to portfolios_path, notice: "record was successfully updated." }
+        format.html { redirect_to portfolios_path, notice: 'record was successfully updated.' }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -52,8 +51,9 @@ class PortfoliosController < ApplicationController
 
     @portfolio_item.destroy
     respond_to do |format|
-      format.html {
-        redirect_to portfolios_url, notice: "Portfolio item was successfully destroyed." }
+      format.html do
+        redirect_to portfolios_url, notice: 'Portfolio item was successfully destroyed.'
+      end
     end
   end
 end
